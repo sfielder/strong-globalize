@@ -6,7 +6,7 @@
 
 'use strict';
 
-var helper = require('./lib/helper');
+var postinstallHelper = require('./lib/postinstall-helper');
 var path = require('path');
 
 var nodeVersion = process.version.replace(
@@ -14,4 +14,4 @@ var nodeVersion = process.version.replace(
 var fileTypeToRemove = (nodeVersion === 'v0.10') ? 'gz' : 'json';
 var cldrPath = path.join(__dirname, 'cldr');
 
-helper.removeRedundantCldrFiles(cldrPath, fileTypeToRemove);
+postinstallHelper.removeRedundantCldrFiles(cldrPath, fileTypeToRemove);

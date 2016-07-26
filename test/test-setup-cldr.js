@@ -4,6 +4,7 @@
 // License text available at https://opensource.org/licenses/Artistic-2.0
 
 var helper = require('../lib/helper');
+var postinstallHelper = require('../lib/postinstall-helper');
 var path = require('path');
 var sltTH = require('./slt-test-helper')
 var test = require('tap').test;
@@ -40,7 +41,7 @@ test('test cldr set up', function(t) {
       var fileTypesToRemove =
         (name === 'cldrv010') ? 'gz' : 'json';
       var cldrPath = path.join(helper.getRootDir(), 'cldr');
-      helper.removeRedundantCldrFiles(cldrPath, fileTypesToRemove);
+      postinstallHelper.removeRedundantCldrFiles(cldrPath, fileTypesToRemove);
       helper.enumerateFilesSync(cldrPath, null, fileTypesToRemove,
         false, false, function(content, filePath) {
           console.error('file: %s should not exist.', filePath);
